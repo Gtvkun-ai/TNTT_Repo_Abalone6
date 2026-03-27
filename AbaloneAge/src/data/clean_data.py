@@ -11,12 +11,14 @@ def normalize_column_names(columns) -> list[str]:
 def clean_abalone_data(
     df: pd.DataFrame,
     *,
+    normalize_columns: bool = True,
     drop_duplicates: bool = False,
     strip_categorical_values: bool = True,
 ) -> pd.DataFrame:
     """Trả về dữ liệu sau khi đã được làm sạch."""
     cleaned_df = df.copy()
-    cleaned_df.columns = normalize_column_names(cleaned_df.columns)
+    if normalize_columns:
+        cleaned_df.columns = normalize_column_names(cleaned_df.columns)
 
     if strip_categorical_values:
         object_cols = cleaned_df.select_dtypes(include=["object", "string"]).columns
