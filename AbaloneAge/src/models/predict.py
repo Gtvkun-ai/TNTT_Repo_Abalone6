@@ -1,6 +1,6 @@
-"""Suy luan tren du lieu moi."""
+"""Suy luận trên dữ liệu mới."""
 
 
 def predict(model, x_input):
-    """Tra ve ket qua du doan tu mo hinh da huan luyen."""
+    """Trả về kết quả dự đoán từ mô hình đã huấn luyện."""
     return model.predict(x_input)
