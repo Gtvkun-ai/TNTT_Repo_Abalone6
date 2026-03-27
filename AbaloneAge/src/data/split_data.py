@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 def split_features_target(
     df: pd.DataFrame,
     target_column: str,
-    test_size: float = 0.2,
+    test_size: float = 0.3,
     random_state: int = 42,
 ):
     """Tach X, y va chia train/test."""

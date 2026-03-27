@@ -9,8 +9,6 @@
 
 ## 2. Danh mục Dữ liệu (15 Bộ dữ liệu lựa chọn)
 
-Ngài phải chọn duy nhất một bộ dữ liệu từ danh sách dưới đây để triển khai:
-
 ### 2.1. Phân loại Nhị phân (Binary Classification) - 07 Bộ
 
 - Bank Note Authentication: Xác thực tiền giấy.
