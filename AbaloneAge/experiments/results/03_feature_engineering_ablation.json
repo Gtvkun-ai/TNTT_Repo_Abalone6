@@ -1,0 +1,28 @@
+{
+  "experiment_name": "feature_engineering_ablation",
+  "dataset": "abalone",
+  "train_size": 0.7,
+  "test_size": 0.3,
+  "random_state": 42,
+  "variants": {
+    "raw_features": {
+      "mse": 4.771747596430579,
+      "rmse": 2.1844330148646307,
+      "rse": 0.46991192267763043,
+      "mae": 1.5456605296666177,
+      "r2": 0.5300880773223695
+    },
+    "manual_feature_engineering": {
+      "mse": 4.640724825903581,
+      "rmse": 2.15423416227289,
+      "rse": 0.4570090687926204,
+      "mae": 1.5268406641402106,
+      "r2": 0.5429909312073796
+    }
+  },
+  "added_features": [
+    "VolumeApprox",
+    "TotalWeightToShell",
+    "EdibleWeightRatio"
+  ]
+}

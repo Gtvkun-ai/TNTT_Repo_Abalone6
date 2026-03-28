@@ -1,0 +1,23 @@
+{
+  "experiment_name": "baseline_random_forest",
+  "dataset": "abalone",
+  "train_size": 0.7,
+  "test_size": 0.3,
+  "random_state": 42,
+  "models": {
+    "baseline_random_forest": {
+      "mse": 4.816459170653907,
+      "rmse": 2.1946432900710553,
+      "rse": 0.47431502686213184,
+      "mae": 1.5433492822966508,
+      "r2": 0.5256849731378681
+    },
+    "tuned_random_forest": {
+      "mse": 4.716441077812136,
+      "rmse": 2.171736880428229,
+      "rse": 0.46446545008548423,
+      "mae": 1.5315323886482386,
+      "r2": 0.5355345499145158
+    }
+  }
+}
