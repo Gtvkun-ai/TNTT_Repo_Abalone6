@@ -1,0 +1,49 @@
+{
+  "tong_quan": {
+    "co_du_lieu_outlier": true,
+    "co_du_lieu_scaling": true,
+    "co_du_lieu_feature_selection": true,
+    "co_du_lieu_ensemble": true
+  },
+  "tong_hop": [
+    {
+      "buoc": "scaling",
+      "ten_tot_nhat": "minmax",
+      "MAE_test": 1.5590950222105646,
+      "RMSE_test": 2.175329190018127,
+      "R2_test": 0.5389879864982308
+    },
+    {
+      "buoc": "kbest",
+      "ten_tot_nhat": 10,
+      "MAE_test": 1.5450803650384637,
+      "RMSE_test": 2.145675545394127,
+      "R2_test": 0.5514711623514637
+    },
+    {
+      "buoc": "rfe",
+      "ten_tot_nhat": 9,
+      "MAE_test": 1.5455462966429687,
+      "RMSE_test": 2.145583308826781,
+      "R2_test": 0.5515097235134464
+    },
+    {
+      "buoc": "model_based",
+      "ten_tot_nhat": "ridge",
+      "MAE_test": 1.545080365038463,
+      "RMSE_test": 2.145675545394127,
+      "R2_test": 0.5514711623514637
+    },
+    {
+      "buoc": "ensemble",
+      "ten_tot_nhat": "voting_ensemble",
+      "MAE_test": 1.4678284952704013,
+      "RMSE_test": 2.055330260590496,
+      "R2_test": 0.5884472570823385
+    }
+  ],
+  "ket_luan": {
+    "buoc_tot_nhat": "ensemble",
+    "gia_tri_tot_nhat": "voting_ensemble"
+  }
+}
