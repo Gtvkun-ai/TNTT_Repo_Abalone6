@@ -1,0 +1,583 @@
+HƯỚNG DẪN THÊM CHI TIẾT CHO BÁO CÁO GIỮA KỲ  
+Mục tiêu: biến báo cáo giữa kỳ thành một tài liệu "đồ án có tinh thần research", không chỉ mô tả đã làm gì mà còn giải thích vì sao làm, thử nghiệm gì, kết quả ra sao, và quyết định cuối cùng dựa trên bằng chứng nào.
+
+==================================================
+1. ĐỊNH HƯỚNG CHUNG
+==================================================
+
+Báo cáo giữa kỳ hiện tại đã khá đầy đủ về khung chương mục. Điều cần bổ sung không phải là kéo dài thêm một cách cơ học, mà là:
+
+- Làm rõ dòng suy nghĩ nghiên cứu.
+- Dùng các notebook research như bằng chứng cho từng quyết định.
+- Trình bày theo "giả thuyết -> thử nghiệm -> kết quả -> kết luận".
+- Chọn lọc bảng, hình, số liệu có giá trị nhất thay vì đưa quá nhiều thứ một lúc.
+
+Mục tiêu sau khi bổ sung:
+
+- Người đọc thấy được nhóm có quy trình nghiên cứu rõ ràng.
+- Người đọc hiểu vì sao nhóm chọn hướng hồi quy, chọn pipeline, chọn model.
+- Người đọc thấy các bước preprocess, feature selection, tuning không phải làm tuỳ ý.
+- Báo cáo giữa kỳ có thể làm nền cho báo cáo cuối kỳ mà không cần viết lại từ đầu.
+
+
+==================================================
+2. NGUYÊN TẮC VIẾT THÊM
+==================================================
+
+2.1. Không viết theo kiểu "notebook nào làm gì"
+
+Không nên viết:  
+"Notebook 01 khám phá dữ liệu, notebook 02 tiền xử lý, notebook 03..."
+
+Nên viết:  
+"Từ EDA, nhóm đặt ra các giả thuyết về vai trò của Sex, ảnh hưởng của outlier và khả năng tồn tại quan hệ phi tuyến. Từ đó, nhóm thiết kế 3 nhánh tiền xử lý để kiểm chứng..."
+
+Nói cách khác, notebook chỉ là nguồn bằng chứng, không phải đơn vị trình bày chính.
+
+2.2. Mỗi mục lớn phải trả lời được 3 câu hỏi
+
+- Tại sao nhóm làm bước này?
+- Nhóm kiểm chứng bằng cách nào?
+- Kết quả đó đã thay đổi quyết định của nhóm ra sao?
+
+2.3. Mỗi bảng/hình đưa vào phải có vai trò rõ ràng
+
+Mỗi bảng/hình nên phục vụ ít nhất một trong các mục tiêu sau:
+
+- Chứng minh một nhận xét từ dữ liệu.
+- So sánh giữa hai hoặc nhiều lựa chọn.
+- Hỗ trợ quyết định chọn hướng tiếp theo.
+- Làm rõ một phát hiện quan trọng.
+
+Nếu bảng/hình không giúp 1 trong 4 việc trên, nên cân nhắc bỏ.
+
+2.4. Báo cáo giữa kỳ không cần "chọn model cuối cùng" quá sớm
+
+Giữa kỳ nên nhấn mạnh:
+
+- Những gì nhóm đã xác định được.
+- Những giả thuyết đã được kiểm chứng.
+- Những hướng đã cho thấy tiềm năng.
+- Những vấn đề còn mở sẽ xử lý ở giai đoạn sau.
+
+Không nhất thiết phải khẳng định đây là model cuối cùng tốt nhất của đồ án, vì giữa kỳ nên ưu tiên "quy trình nghiên cứu và bằng chứng".
+
+
+==================================================
+3. KHUYẾN NGHỊ BỔ SUNG THEO TỪNG CHƯƠNG
+==================================================
+
+--------------------------------------------------
+CHƯƠNG 1. GIỚI THIỆU ĐỒ ÁN
+--------------------------------------------------
+
+Chương 1 hiện tại đã ổn. Nếu bổ sung, chỉ nên bổ sung có chọn lọc:
+
+3.1.1. Bổ sung một đoạn ngắn về "động lực nghiên cứu"
+
+Có thể chèn sau phần 1.3 hoặc 1.5:
+
+"Bên cạnh mục tiêu xây dựng mô hình dự đoán Rings, đồ án còn hướng đến việc xác định yếu tố nào thực sự giúp cải thiện khả năng dự đoán trên bộ dữ liệu Abalone. Vì vậy, nhóm không chỉ benchmark thuật toán, mà còn tổ chức chuỗi thực nghiệm theo từng giả thuyết về dữ liệu, preprocess, đặc trưng và model."
+
+3.1.2. Bổ sung một danh sách "câu hỏi nghiên cứu"
+
+Nên thêm 4 câu hỏi chính:
+
+- Các đặc trưng vật lý nào có liên hệ mạnh nhất với Rings?
+- Outlier và độ lệch phân phối có cần can thiệp mạnh hay không?
+- Feature engineering có cải thiện tốt hơn preprocess thuần tuý hay không?
+- Model nào tổng quát hoá tốt nhất khi so sánh giữa CV và test?
+
+Nếu thêm được phần này, báo cáo sẽ ra chất đồ án nghiên cứu hơn rất nhiều.
+
+
+--------------------------------------------------
+CHƯƠNG 2. PHÂN TÍCH BÀI TOÁN VÀ DỮ LIỆU
+--------------------------------------------------
+
+Đây là chương nên lấy nội dung từ cụm:
+
+- 01_eda_data_overview_v2.ipynb
+- 01_eda_outlier_check.ipynb
+- 01_eda_correlation.ipynb
+
+3.2.1. Không chỉ mô tả dữ liệu, mà phải suy ra "quyết định kỹ thuật"
+
+Sau mỗi phát hiện EDA, nên có 1 câu kết nối sang quyết định:
+
+Ví dụ:
+
+- Phát hiện: Sex có sự khác biệt về mean/median Rings giữa các nhóm.  
+  Quyết định: giữ lại và mã hoá Sex, không loại bỏ vì không phải biến dư thừa.
+
+- Phát hiện: các biến khối lượng có độ lệch và có outlier.  
+  Quyết định: không loại outlier ngay, tạo nhánh robust_log_scaled để kiểm chứng.
+
+- Phát hiện: ShellWeight, Diameter, Height có tương quan dương với Rings.  
+  Quyết định: ưu tiên xem xét feature engineering và model phi tuyến.
+
+3.2.2. Nên thêm một bảng "EDA -> Implication"
+
+Bảng gợi ý:
+
+Cột 1: Phát hiện từ EDA  
+Cột 2: Bằng chứng  
+Cột 3: Hàm ý kỹ thuật  
+Cột 4: Bước tiếp theo
+
+Ví dụ:
+
+- Sex khác biệt giữa các nhóm | bảng thống kê theo Sex | Sex có tín hiệu dự báo | One-hot encoding  
+- Weight có lệch phân phối | histogram, boxplot | cần thử robust/log scaling | tạo robust_log_scaled  
+- Tương quan không quá cao | heatmap/correlation | quan hệ có thể phi tuyến | thử tree, SVR, MLP
+
+3.2.3. Mục "Thử nghiệm bổ sung" trong Chương 2
+
+Nếu giữ mục 2.5, nên đổi thành:
+
+"2.5. Giả thuyết rút ra từ phân tích dữ liệu"
+
+Rồi liệt kê 4–5 giả thuyết:
+
+- Sex là biến hữu ích.
+- Standard scaling có thể phù hợp với model nhạy scale.
+- Robust/log scaling có thể hữu ích khi dữ liệu lệch.
+- Model phi tuyến có thể phù hợp hơn model tuyến tính.
+- Feature engineering sinh học/hình học có thể tạo lợi ích bổ sung.
+
+Phần này là cầu nối đẹp giữa Chương 2 và Chương 3.
+
+
+--------------------------------------------------
+CHƯƠNG 3. PHƯƠNG PHÁP VÀ QUÁ TRÌNH THỰC NGHIỆM
+--------------------------------------------------
+
+Đây là chương nên bổ sung nhiều nhất để "thể hiện chi tiết quá trình đồ án".
+
+Cần viết theo 5 chặng nghiên cứu, không chỉ là các bước thao tác.
+
+3.3.1. Giai đoạn 1 - Xác lập baseline
+
+Mục tiêu:
+
+- Tạo mốc so sánh ban đầu.
+- Kiểm tra xem dữ liệu và pipeline có tạo ra baseline ổn định hay không.
+
+Nên nói rõ:
+
+- Cách chia train/test.
+- Lý do cố định random_state = 42.
+- Lý do dùng 5-fold CV.
+- Vì sao cần đồng thời nhìn CV và test.
+
+Nên có bảng:
+
+"10 model baseline"
+
+Cột:
+
+- Model
+- Dataset variant
+- RMSE CV
+- MAE CV
+- RMSE test
+- MAE test
+- Ghi chú ngắn
+
+Sau bảng cần viết 3 nhận xét:
+
+- Model nào mạnh nhất trên CV.
+- Model nào mạnh nhất trên test.
+- Hai bảng xếp hạng có trùng nhau không.
+
+3.3.2. Giai đoạn 2 - Kiểm chứng ảnh hưởng của preprocessing
+
+Đây là phần rất nên viết rõ, vì nó thể hiện nhóm không preprocess một cách máy móc.
+
+Nên viết theo form:
+
+- Giả thuyết: dữ liệu có outlier và độ lệch, nên robust/log scaling có thể giúp.
+- Cách kiểm chứng: tạo các biến thể preprocess và đánh giá trên nhóm model phù hợp.
+- Kết quả: không phải model nào cũng hưởng lợi từ robust_log_scaled.
+- Kết luận: preprocess phải gắn với từng nhóm thuật toán.
+
+Nội dung nên lấy từ:
+
+- 02_preprocessing_encoding.ipynb
+- 02_preprocessing_outlier_v2.ipynb
+- 02_preprocessing_scaling.ipynb
+
+Cần có 1 bảng tổng hợp như sau:
+
+- Biến thể dữ liệu
+- Mô tả ngắn
+- Mục đích
+- Nhóm model phù hợp
+- Nhận xét kết quả
+
+Ví dụ:
+
+- encoded_only | One-hot, không scale | cho model cây | phù hợp RF/GBR  
+- standard_scaled | One-hot + StandardScaler | cho model nhạy scale | phù hợp SVR/MLP  
+- robust_log_scaled | log1p + RobustScaler | để kiểm chứng outlier | hữu ích với một số model
+
+3.3.3. Giai đoạn 3 - Chọn lọc đặc trưng
+
+Đây là phần nên chen thêm để báo cáo giữa kỳ "có độ sâu hơn". Hiện phần này chưa được khai thác mạnh trong bản pdf.
+
+Nội dung nên lấy từ:
+
+- 03_feature_selection_baseline.ipynb
+- 03_feature_selection_kbest.ipynb
+- 03_feature_selection_model_based.ipynb
+- 03_feature_selection_rfe.ipynb
+- 03_feature_selection_compare_v2.ipynb
+
+Cách viết để không bị rối:
+
+Bước 1. Đặt vấn đề:  
+"Với số đặc trưng không quá lớn nhưng có khả năng tương quan mạnh với nhau, nhóm kiểm tra xem việc chọn lọc đặc trưng có giúp giảm dư thừa và nâng khả năng tổng quát hoá hay không."
+
+Bước 2. Trình bày 3 hướng:
+
+- Statistical: KBest  
+- Wrapper: RFE  
+- Embedded/Model-based
+
+Bước 3. Tổng hợp:
+
+- Hướng nào ổn định nhất
+- Đặc trưng nào lặp lại nhiều lần trong các phương pháp
+- Có cần cắt mạnh không, hay nên giữ nhiều đặc trưng hơn
+
+Rất nên có một bảng:
+
+"Top đặc trưng lặp lại qua nhiều phương pháp"
+
+Cột:
+
+- Đặc trưng
+- KBest
+- RFE
+- Model-based
+- Ghi chú ý nghĩa
+
+3.3.4. Giai đoạn 4 - Benchmark nhiều model
+
+Phần này nên đưa dữ liệu từ:
+
+- 04_model_linear_models.ipynb
+- 04_model_tree_models.ipynb
+- 04_model_compare_v2.ipynb
+
+Cần trình bày theo nhóm:
+
+- Nhóm tuyến tính
+- Nhóm cây
+- Nhóm kernel
+- Nhóm neural network
+
+Mỗi nhóm nên có 1 đoạn ngắn:
+
+- Vì sao nhóm này được đưa vào.
+- Ưu/nhược điểm khi áp vào dữ liệu Abalone.
+- Kết quả nhìn chung.
+
+Sau đó có 1 bảng so sánh tổng:
+
+- Model
+- Group
+- Dataset variant
+- RMSE test
+- MAE test
+- R2 test
+- Nhận xét
+
+3.3.5. Giai đoạn 5 - Thử nghiệm bổ sung và ensemble
+
+Nội dung nên lấy từ:
+
+- 04_model_ensemble_try1.ipynb
+- 05_final_baseline.ipynb
+- 05_final_best2models.ipynb
+- 06_report_summary.ipynb
+- thêm kết quả trong experiments nếu cần
+
+Phần này rất nên viết theo tinh thần paper tham khảo:
+
+- baseline nào được chọn làm mốc
+- thử thêm những hướng cải thiện nào
+- cái nào giúp, cái nào không giúp
+- bài học rút ra là gì
+
+Cần nhấn mạnh:
+
+- Kết quả âm cũng có giá trị.
+- Ensemble không tự động vượt model đơn lẻ.
+- Tuning không đảm bảo sẽ thắng baseline mạnh nhất.
+
+
+--------------------------------------------------
+CHƯƠNG 4. KẾT QUẢ VÀ THẢO LUẬN
+--------------------------------------------------
+
+Chương này không nên chỉ nhắc lại bảng số. Đây là chỗ để "bàn về nghĩa của kết quả".
+
+4.1. Nên có một tiểu mục "các phát hiện chính"
+
+Chỉ cần 4–5 bullet mạnh:
+
+- Baseline nào mạnh nhất.
+- Model nào ổn định nhất giữa CV và test.
+- Preprocessing nào có tác dụng thật.
+- Feature engineering có vai trò gì.
+- Ensemble có giúp không.
+
+4.2. Nên thêm tiểu mục "giá trị của kết quả âm"
+
+Đây là điểm nhóm có thể vượt lên:
+
+Không cần xem việc "không cải thiện" là xấu. Ngược lại, nếu nhóm chỉ ra được:
+
+- đã thử,
+- đã đo lường,
+- đã thấy không hiệu quả,
+- đã giải thích lý do,
+
+thì báo cáo sẽ ra chất nghiên cứu hơn.
+
+4.3. Nên bổ sung một bảng "Decision Log"
+
+Bảng này rất hợp với giữa kỳ:
+
+Cột 1: Vấn đề  
+Cột 2: Thử nghiệm  
+Cột 3: Kết quả  
+Cột 4: Quyết định
+
+Ví dụ:
+
+- Dữ liệu có outlier | thử robust_log_scaled | chỉ cải thiện một số model | giữ nhiều nhánh preprocess  
+- Muốn giảm dư thừa đặc trưng | thử KBest/RFE/model-based | không phương pháp nào áp đảo hoàn toàn | dùng tổng hợp đa phương pháp  
+- Muốn nâng hiệu năng | thử tuning và ensemble | cải thiện cục bộ, chưa vượt baseline tốt nhất | tiếp tục theo dõi MLP và SVR
+
+
+--------------------------------------------------
+CHƯƠNG 5. KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+--------------------------------------------------
+
+Kết luận giữa kỳ nên tránh tuyên bố quá "đóng".
+
+Nên viết theo 3 lớp:
+
+- Những gì đã xác lập được chắc chắn.
+- Những gì đang cho thấy tiềm năng.
+- Những gì cần xác minh ở giai đoạn cuối.
+
+Mẫu viết gợi ý:
+
+"Đến thời điểm báo cáo giữa kỳ, nhóm đã xác lập được pipeline có thể tái lập cho bài toán AbaloneAge, xác định được các hướng preprocess hợp lý, và benchmark được các nhóm mô hình có triển vọng. Đồng thời, các thử nghiệm feature selection và ensemble bước đầu cho thấy nhóm đã vượt qua mức mô tả kỹ thuật đơn thuần để chuyển sang cách tiếp cận dựa trên giả thuyết và bằng chứng. Tuy nhiên, việc đánh giá độ ổn định của kết quả qua nhiều lần chia dữ liệu và hoàn thiện chiến lược tối ưu hoá vẫn là hướng cần tiếp tục ở giai đoạn sau."
+
+
+==================================================
+4. NÊN LẤY GÌ TỪ CỤM RESEARCH ĐỂ ĐƯA VÀO BÁO CÁO
+==================================================
+
+Gợi ý map notebook -> nội dung báo cáo:
+
+4.1. EDA
+
+- 01_eda_data_overview_v2.ipynb  
+  Lấy:
+  - kích thước dữ liệu  
+  - kiểu dữ liệu  
+  - missing/duplicate  
+  - mô tả bộ biến  
+
+- 01_eda_outlier_check.ipynb  
+  Lấy:
+  - bảng tỷ lệ outlier  
+  - nhận xét về Height = 0  
+  - quyết định giữ dữ liệu gốc và tạo nhánh robust  
+
+- 01_eda_correlation.ipynb  
+  Lấy:
+  - top biến tương quan với Rings  
+  - nhận xét quan hệ chưa đủ để dùng model tuyến tính đơn giản  
+
+4.2. Preprocessing
+
+- 02_preprocessing_encoding.ipynb  
+  Lấy:
+  - lý do cần one-hot Sex  
+  - các file processed tạo ra  
+
+- 02_preprocessing_outlier_v2.ipynb  
+  Lấy:
+  - chiến lược clip/log/robust  
+  - phần giải thích tại sao không remove outlier thô  
+
+- 02_preprocessing_scaling.ipynb  
+  Lấy:
+  - so sánh scaler  
+  - nhận xét scaler nào hợp cho loại model nào  
+
+4.3. Feature selection
+
+- 03_feature_selection_kbest.ipynb  
+  Lấy:
+  - xu hướng RMSE theo k  
+  - top đặc trưng thống kê  
+
+- 03_feature_selection_model_based.ipynb  
+  Lấy:
+  - importance trung bình  
+  - các biến xuất hiện ổn định  
+
+- 03_feature_selection_rfe.ipynb  
+  Lấy:
+  - số đặc trưng tối ưu theo RFE  
+  - có giảm được dư thừa không  
+
+- 03_feature_selection_compare_v2.ipynb  
+  Lấy:
+  - bảng tổng hợp đề xuất bộ đặc trưng  
+  - phần "vì sao chọn bộ này"  
+
+4.4. Modeling
+
+- 04_model_linear_models.ipynb  
+  Lấy:
+  - kết quả nhóm linear/non-tree  
+  - vị trí của SVR, LinearSVR, MLP  
+
+- 04_model_tree_models.ipynb  
+  Lấy:
+  - baseline tree  
+  - tuning RF  
+  - feature importance của model cây  
+
+- 04_model_compare_v2.ipynb  
+  Lấy:
+  - bảng top model tổng hợp  
+  - hình so sánh nhóm model  
+
+4.5. Final
+
+- 05_final_baseline.ipynb  
+  Lấy:
+  - bảng tổng hợp baseline tốt nhất  
+  - top 3 baseline  
+
+- 05_final_best2models.ipynb  
+  Lấy:
+  - lý do chọn top 2  
+  - residual plot/so sánh chuyên sâu  
+
+- 06_report_summary.ipynb  
+  Lấy:
+  - bảng tổng hợp mức cao  
+  - hình metric tổng quan nếu có  
+
+
+==================================================
+5. CÁC BẢNG VÀ HÌNH RẤT NÊN CÓ
+==================================================
+
+Không cần đưa tất cả. Chỉ nên chọn bộ sau:
+
+5.1. Bắt buộc nên có
+
+- Bảng mô tả dữ liệu và biến
+- Hình phân phối Rings
+- Bảng thống kê Rings theo Sex
+- Heatmap hoặc bar plot tương quan
+- Bảng baseline 10 model
+- Bảng so sánh CV vs test cho top model
+- Bảng baseline vs optimized
+- Bảng tổng hợp kết luận theo từng giai đoạn
+
+5.2. Nên có nếu còn chỗ
+
+- Boxplot các biến có outlier
+- Biểu đồ so sánh scaler
+- Hình top đặc trưng qua nhiều phương pháp
+- Bar chart top 10 model
+- Actual vs Predicted cho top model
+- Residual plot cho top 2 model
+
+5.3. Không nên đưa quá nhiều
+
+- Nhiều boxplot lặp lại cùng một ý
+- Nhiều bảng metric chỉ chênh nhau rất nhỏ mà không có thông điệp mới
+- Screenshot notebook
+- Bảng code dài
+
+
+==================================================
+6. GỢI Ý MẪU VIẾT CHO CÁC ĐOẠN QUAN TRỌNG
+==================================================
+
+6.1. Mẫu viết phần chuyển từ EDA sang preprocess
+
+"Kết quả EDA cho thấy bộ dữ liệu không có giá trị thiếu nhưng tồn tại độ lệch phân phối và một tỷ lệ outlier nhất định ở nhóm biến khối lượng. Vì vậy, thay vì loại bỏ dữ liệu một cách cơ học, nhóm lựa chọn hai hướng tiền xử lý song song: một nhánh giữ gần như nguyên trạng cho nhóm model cây, và một nhánh chuẩn hoá/robust hoá cho nhóm model nhạy scale để kiểm chứng tác động của phân bố dữ liệu lên hiệu năng dự đoán."
+
+6.2. Mẫu viết phần feature selection
+
+"Sau khi xác lập được pipeline preprocess cơ bản, nhóm tiếp tục đặt câu hỏi liệu toàn bộ đặc trưng hiện tại có đều cần thiết hay không. Để trả lời, nhóm không phụ thuộc vào một kỹ thuật duy nhất, mà thử đồng thời ba hướng: lựa chọn thống kê, wrapper và model-based. Cách tiếp cận đa phương pháp này giúp tăng độ tin cậy của kết luận về không gian đặc trưng tối ưu."
+
+6.3. Mẫu viết phần kết quả âm
+
+"Một điểm đáng chú ý là không phải mọi can thiệp nâng cao đều tạo ra cải thiện rõ ràng. Một số biến thể preprocessing và ensemble cho kết quả tốt trên cross-validation nhưng không vượt baseline trên tập test. Tuy nhiên, về mặt nghiên cứu, đây là phát hiện có giá trị, bởi nó cho thấy việc tăng độ phức tạp của hệ thống không tự động dẫn đến khả năng tổng quát hoá tốt hơn."
+
+6.4. Mẫu viết phần kết luận giữa kỳ
+
+"Đến giai đoạn giữa kỳ, nhóm đã chuyển từ mục xây dựng pipeline cơ sở sang mục kiểm chứng có hệ thống các giả thuyết cải thiện. Những kết quả hiện tại cho thấy giá trị lớn nhất của đồ án không chỉ nằm ở việc tìm ra mô hình có sai số thấp, mà còn nằm ở việc xác định được những yếu tố nào thực sự có tác động đến chất lượng dự đoán trên bộ dữ liệu Abalone."
+
+
+==================================================
+7. NHỮNG ĐIỂM CẦN TRÁNH KHI BỔ SUNG
+==================================================
+
+- Không viết thành lịch sử phân công nhóm trong thân báo cáo học thuật.
+- Không đưa quá nhiều tên file/notebook vào nội dung chính.
+- Không kết luận quá mạnh khi mới đang ở giữa kỳ.
+- Không tuyên bố "model tốt nhất" nếu chưa nêu rõ theo CV hay test.
+- Không chỉ đưa kết quả đẹp mà bỏ qua kết quả âm.
+- Không để mục lục lỗi, bookmark lỗi, tên mục chồng chéo.
+
+
+==================================================
+8. CHECKLIST BỔ SUNG BÁO CÁO GIỮA KỲ
+==================================================
+
+Trước khi xuất PDF, nên kiểm tra:
+
+- Đã có phần "câu hỏi nghiên cứu" chưa?
+- Mỗi quyết định preprocess đã có bằng chứng từ EDA chưa?
+- Đã có bảng tổng hợp 10 model baseline chưa?
+- Đã phân biệt rõ CV và test chưa?
+- Đã có ít nhất 1 phần nói về feature selection chưa?
+- Đã có ít nhất 1 phần nói về kết quả âm chưa?
+- Đã có 1 bảng tổng hợp "giai đoạn -> phát hiện -> quyết định" chưa?
+- Mục lục còn lỗi bookmark hay đánh số sai không?
+- Hình và bảng đã được gọi tên thống nhất chưa?
+- Phần kết luận đã giữ đúng tính chất giữa kỳ chưa?
+
+
+==================================================
+9. KẾT LUẬN HƯỚNG DẪN
+==================================================
+
+Hướng bổ sung tốt nhất cho báo cáo giữa kỳ là:
+
+- Không tăng trang một cách máy móc.
+- Tăng mức độ thuyết phục của lập luận.
+- Dùng cụm research làm bằng chứng cho từng quyết định.
+- Tổ chức chương 3 và chương 4 theo dòng nghiên cứu, không theo danh sách việc đã làm.
+
+Nếu triển khai đúng hướng này, báo cáo giữa kỳ sẽ thể hiện rõ ràng hơn 3 điều:
+
+- Nhóm hiểu bài toán.
+- Nhóm có quy trình nghiên cứu.
+- Nhóm có khả năng ra quyết định dựa trên bằng chứng thay vì chỉ chạy mô hình.
