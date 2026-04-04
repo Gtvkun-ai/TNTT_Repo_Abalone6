@@ -260,12 +260,14 @@ Nếu cần chuẩn bị bản nộp cuối, nên đọc theo thứ tự:
 
 Theo file `AbaloneAge/reports/phan_cong_cong_viec/team_assignment.md`, hiện repo đang để sẵn khung phân công:
 
-| Vai trò | Nhiệm vụ |
-| --- | --- |
-| Thành viên 1 | EDA và tiền xử lý dữ liệu |
-| Thành viên 2 | Huấn luyện và tối ưu mô hình |
-| Thành viên 3 | Đánh giá và trực quan hóa kết quả |
-| Nhóm trưởng | Tổng hợp báo cáo và slide |
+| STT | Thành viên            | Nhiệm vụ chính |
+|-----|-----------------------|----------------|
+| 1   | Cao Nguyễn Yên Hòa    | Lập kế hoạch; nghiên cứu tài liệu (Paper); xây dựng chuỗi 5 notebook nền tảng (01–05: khám phá dữ liệu, tiền xử lý, huấn luyện, đánh giá, thử nghiệm bổ sung). |
+| 2   | Trần Nguyễn Đăng Khoa | Nội dung Report; phân tích tương quan (EDA correlation); tiền xử lý ngoại lệ nâng cao (Preprocessing outlier v2); chọn lọc đặc trưng dựa trên mô hình (Feature selection model-based); module so sánh toàn diện (Model compare v2). |
+| 3   | Lưu Gia Bảo           | Thiết kế và chỉnh sửa nội dung Report; EDA tổng quan nâng cao (data overview v2); mã hóa đặc trưng (Preprocessing encoding); chọn lọc đặc trưng thống kê (Feature selection KBest); triển khai mô hình Cây quyết định (Tree models); đánh giá chuyên sâu 2 mô hình xuất sắc nhất (Final best 2 models). |
+| 4   | Lâm Hán Đạt           | Nội dung Slide; EDA tổng quan dữ liệu (data overview); module tiền xử lý cơ sở (Preprocessing baseline); chọn lọc đặc trưng cơ sở (Feature selection baseline); triển khai nhóm mô hình Tuyến tính (Linear models); xác lập mốc đánh giá cuối cùng (Final baseline). |
+| 5   | Hồ Trung Tín          | Thiết kế Slide; rà soát ngoại lệ (EDA outlier check) và chuẩn hóa dữ liệu (Scaling); chọn lọc đặc trưng bằng RFE (baseline, compare v2); thử nghiệm chiến lược học tích hợp (Ensemble try 1); đóng gói kết quả toàn dự án (Report summary). |
+
 
 ## Ghi chú
 
